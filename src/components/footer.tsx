@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { Package, Github, Twitter } from 'lucide-react'
+import { Package, Github } from 'lucide-react'
 
 export function Footer() {
   return (
     <footer className="border-t py-8 md:py-12">
-      <div className="container px-4 md:px-6">
+      <div className="container">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-3">
             <Link href="/" className="flex items-center gap-2">

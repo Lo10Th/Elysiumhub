@@ -18,7 +18,7 @@ export default async function HomePage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/20 py-20 md:py-32">
-        <div className="container px-4 md:px-6">
+        <div className="container">
           <div className="flex flex-col items-center text-center space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
@@ -60,7 +60,7 @@ export default async function HomePage() {
 
       {/* Features Section */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container px-4 md:px-6">
+        <div className="container">
           <div className="grid gap-8 md:grid-cols-3">
             <Card>
               <CardHeader>
@@ -95,7 +95,7 @@ export default async function HomePage() {
 
       {/* Featured Emblems Section */}
       <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
+        <div className="container">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-3xl font-bold tracking-tight">Featured Emblems</h2>
@@ -134,7 +134,7 @@ export default async function HomePage() {
 
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container px-4 md:px-6">
+        <div className="container">
           <div className="flex flex-col items-center text-center space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold tracking-tight">Ready to get started?</h2>
             <p className="text-muted-foreground text-lg">
@@ -157,7 +157,7 @@ export default async function HomePage() {
 
       {/* CLI Section */}
       <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
+        <div className="container">
           <div className="grid gap-8 md:grid-cols-2 items-center">
             <div className="space-y-4">
               <h2 className="text-3xl font-bold tracking-tight">Powerful CLI Tool</h2>
