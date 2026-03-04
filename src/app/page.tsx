@@ -93,8 +93,36 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Emblems Section */}
+      {/* CLI Section */}
       <section className="py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-8 md:grid-cols-2 items-center">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight">Powerful CLI Tool</h2>
+              <p className="text-muted-foreground text-lg">
+                Use our CLI to interact with emblems directly from your terminal. Pull, execute, and manage APIs with simple commands.
+              </p>
+              <div className="bg-muted rounded-lg p-4 font-mono text-sm">
+                <div className="text-muted-foreground"># Install the CLI</div>
+                <div className="text-foreground">$ go install github.com/elysium/elysium/cli/cmd@latest</div>
+                <div className="mt-2 text-muted-foreground"># Pull an emblem</div>
+                <div className="text-foreground">$ ely pull clothing-shop</div>
+                <div className="mt-2 text-muted-foreground"># Execute an action</div>
+                <div className="text-foreground">$ ely execute clothing-shop list-products</div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg p-8 flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-6xl font-bold text-primary mb-2">ely</div>
+                <div className="text-muted-foreground">The Elysium CLI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Emblems Section */}
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -133,7 +161,7 @@ export default async function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section className="py-16 md:py-24">
         <div className="container">
           <div className="flex flex-col items-center text-center space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold tracking-tight">Ready to get started?</h2>
@@ -150,34 +178,6 @@ export default async function HomePage() {
                   View on GitHub
                 </Button>
               </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CLI Section */}
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <div className="grid gap-8 md:grid-cols-2 items-center">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight">Powerful CLI Tool</h2>
-              <p className="text-muted-foreground text-lg">
-                Use our CLI to interact with emblems directly from your terminal. Pull, execute, and manage APIs with simple commands.
-              </p>
-              <div className="bg-muted rounded-lg p-4 font-mono text-sm">
-                <div className="text-muted-foreground"># Install the CLI</div>
-                <div className="text-foreground">$ go install github.com/elysium/elysium/cli/cmd@latest</div>
-                <div className="mt-2 text-muted-foreground"># Pull an emblem</div>
-                <div className="text-foreground">$ ely pull clothing-shop</div>
-                <div className="mt-2 text-muted-foreground"># Execute an action</div>
-                <div className="text-foreground">$ ely execute clothing-shop list-products</div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg p-8 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl font-bold text-primary mb-2">ely</div>
-                <div className="text-muted-foreground">The Elysium CLI</div>
-              </div>
             </div>
           </div>
         </div>
