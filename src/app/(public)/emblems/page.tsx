@@ -24,6 +24,10 @@ export default async function EmblemsPage({
 }: {
   searchParams: { category?: string }
 }) {
+  const activeCategory = searchParams.category 
+    ? decodeURIComponent(searchParams.category) 
+    : null
+
   let emblems = []
   try {
     emblems = await getEmblems({ 
@@ -66,7 +70,7 @@ export default async function EmblemsPage({
             <div className="flex flex-wrap gap-2 md:flex-col">
               <Link href="/emblems">
                 <Badge 
-                  variant={!searchParams.category ? 'default' : 'outline'}
+                  variant={!activeCategory ? 'default' : 'outline'}
                   className="cursor-pointer"
                 >
                   All
@@ -78,7 +82,7 @@ export default async function EmblemsPage({
                   href={`/emblems?category=${encodeURIComponent(category)}`}
                 >
                   <Badge 
-                    variant={searchParams.category === category ? 'default' : 'outline'}
+                    variant={activeCategory === category ? 'default' : 'outline'}
                     className="cursor-pointer"
                   >
                     {category}
@@ -102,8 +106,8 @@ export default async function EmblemsPage({
               <Package className="h-12 w-12 text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-2">No emblems found</h3>
               <p className="text-muted-foreground mb-4">
-                {searchParams.category 
-                  ? `No emblems in the "${searchParams.category}" category yet.`
+                {activeCategory 
+                  ? `No emblems in the "${activeCategory}" category yet.`
                   : 'Be the first to publish an emblem to the registry.'}
               </p>
               <Link href="/emblems/new">

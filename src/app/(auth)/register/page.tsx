@@ -41,41 +41,59 @@ export default function RegisterPage() {
 
     setLoading(true)
 
-    const supabase = createClient()
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          username,
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            username,
+          },
         },
-      },
-    })
+      })
 
-    if (error) {
-      setError(error.message)
+      if (error) {
+        if (error.message.includes('Unexpected end of JSON') || error.message.includes('fetch')) {
+          setError('Unable to connect to authentication service. Please check your internet connection.')
+        } else {
+          setError(error.message)
+        }
+        setLoading(false)
+        return
+      }
+
+      setSuccess(true)
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred. Please try again.')
+    } finally {
       setLoading(false)
-      return
     }
-
-    setSuccess(true)
-    setLoading(false)
   }
 
   const handleGithubRegister = async () => {
     setError(null)
     setLoading(true)
 
-    const supabase = createClient()
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'github',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    })
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'github',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        },
+      })
 
-    if (error) {
-      setError(error.message)
+      if (error) {
+        if (error.message.includes('fetch') || error.message.includes('network')) {
+          setError('Unable to connect to authentication service. Please check your internet connection.')
+        } else {
+          setError(error.message)
+        }
+        setLoading(false)
+      }
+    } catch (err: any) {
+      setError('GitHub sign in is not configured. Please contact support.')
       setLoading(false)
     }
   }
