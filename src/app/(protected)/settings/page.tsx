@@ -5,13 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
 import { createClient } from '@/lib/supabase/client'
-import { Loader2, User, Key, Check } from 'lucide-react'
+import { Loader2, User, Key, Check, BadgeCheck, Mail } from 'lucide-react'
+import { VerifiedBadge } from '@/components/ui/verified-badge'
 
 export default function SettingsPage() {
   const [username, setUsername] = useState('')
   const [bio, setBio] = useState('')
+  const [isVerified, setIsVerified] = useState(false)
   const [loading, setLoading] = useState(false)
   const [saved, setSaved] = useState(false)
   const [user, setUser] = useState<any>(null)
@@ -32,6 +33,7 @@ export default function SettingsPage() {
         if (profile) {
           setUsername(profile.username || '')
           setBio(profile.bio || '')
+          setIsVerified(profile.is_verified || false)
         }
       }
     }
@@ -137,6 +139,50 @@ export default function SettingsPage() {
             <Button variant="outline">
               Manage Tokens
             </Button>
+          </CardContent>
+        </Card>
+
+        {/* Account Verification */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BadgeCheck className="h-5 w-5" />
+              Account Verification
+            </CardTitle>
+            <CardDescription>
+              Get your account verified
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {isVerified ? (
+              <div className="flex items-center gap-2">
+                <VerifiedBadge size="md" />
+                <span className="text-sm font-medium text-green-600">Your account is verified</span>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  Verified accounts get a badge next to their name on their profile and emblems. To get verified, send an email from your registered email address to:
+                </p>
+                <div className="bg-muted rounded-md p-3">
+                  <a 
+                    href="mailto:karl.cornelius100@gmail.com?subject=Verify%20my%20Elysium%20account&body=Hi%2C%0A%0AI%20would%20like%20to%20verify%20my%20Elysium%20account.%0A%0AUsername%3A%20{username}%0A%0AThank%20you!" 
+                    className="flex items-center gap-2 text-sm font-medium hover:underline"
+                  >
+                    <Mail className="h-4 w-4" />
+                    karl.cornelius100@gmail.com
+                  </a>
+                </div>
+                <Button variant="outline" asChild>
+                  <a 
+                    href="mailto:karl.cornelius100@gmail.com?subject=Verify%20my%20Elysium%20account&body=Hi%2C%0A%0AI%20would%20like%20to%20verify%20my%20Elysium%20account.%0A%0AUsername%3A%20{username}%0A%0AThank%20you!"
+                  >
+                    <Mail className="h-4 w-4 mr-2" />
+                    Send Verification Email
+                  </a>
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>

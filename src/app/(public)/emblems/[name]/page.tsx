@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Package, Download, User, ExternalLink, Copy, Terminal, AlertTriangle } from 'lucide-react'
+import { VerifiedBadge } from '@/components/ui/verified-badge'
 
 export default async function EmblemDetailPage({
   params,
@@ -90,6 +91,7 @@ export default async function EmblemDetailPage({
               >
                 {emblem.author_name || 'Anonymous'}
               </Link>
+              {emblem.author_verified && <VerifiedBadge size="sm" />}
             </div>
           </CardContent>
         </Card>

@@ -4,6 +4,7 @@ export interface User {
   username?: string
   avatar_url?: string
   bio?: string
+  is_verified?: boolean
   created_at: string
   updated_at: string
 }
@@ -14,6 +15,7 @@ export interface Emblem {
   description: string
   author_id?: string
   author_name?: string
+  author_verified?: boolean
   category?: string
   tags?: string[]
   license: string

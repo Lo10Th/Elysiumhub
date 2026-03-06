@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Package, Download, Calendar } from 'lucide-react'
 import { getEmblems } from '@/lib/api'
+import { VerifiedBadge } from '@/components/ui/verified-badge'
 
 export default async function UserProfilePage({
   params,
@@ -44,7 +45,10 @@ export default async function UserProfilePage({
             </AvatarFallback>
           </Avatar>
           <div>
-            <h1 className="text-3xl font-bold">@{profile.username}</h1>
+            <h1 className="text-3xl font-bold flex items-center gap-2">
+              @{profile.username}
+              {profile.is_verified && <VerifiedBadge size="lg" />}
+            </h1>
             {profile.bio && (
               <p className="text-muted-foreground mt-1">{profile.bio}</p>
             )}

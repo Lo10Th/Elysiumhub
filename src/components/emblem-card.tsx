@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Package, Download, User } from 'lucide-react'
 import type { Emblem } from '@/types'
+import { VerifiedBadge } from '@/components/ui/verified-badge'
 
 interface EmblemCardProps {
   emblem: Emblem
@@ -33,6 +34,7 @@ export function EmblemCard({ emblem }: EmblemCardProps) {
             <div className="flex items-center gap-1">
               <User className="h-4 w-4" />
               <span>{emblem.author_name || 'Anonymous'}</span>
+              {emblem.author_verified && <VerifiedBadge size="sm" />}
             </div>
             <div className="flex items-center gap-1">
               <Download className="h-4 w-4" />
